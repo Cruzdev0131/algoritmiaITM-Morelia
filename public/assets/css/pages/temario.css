@@ -1,0 +1,762 @@
+/* ===============================================
+   TEMARIO.CSS - CAPC-ITM
+   Estilos específicos para la página del temario
+   =============================================== */
+
+/* ========================================
+   ESTILOS BASE
+   ======================================== */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #dbeafe, #f4f4f4);
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    transition: background 1s ease-in-out;
+    min-height: 100vh;
+}
+
+/* ========================================
+   HEADER Y SECCIÓN DEL CLUB
+   ======================================== */
+
+header {
+    background: linear-gradient(to right, #1e3a8a, #3b82f6);
+    color: #ffffff;
+    padding: 0;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.club-section {
+    background-image: url('../../images/backgrounds/fondo.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+    padding: clamp(40px, 10vw, 80px) 20px;
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+    text-align: center;
+    animation: pulseGlow 4s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: clamp(200px, 25vh, 300px);
+}
+
+.club-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.club-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+.club-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(15px, 3vw, 25px);
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.club-logo {
+    width: clamp(80px, 12vw, 150px);
+    height: clamp(80px, 12vw, 150px);
+    filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) 
+            drop-shadow(0 0 40px rgba(0, 255, 255, 0.4));
+    transition: all 0.4s ease;
+    animation: logoFloat 3s ease-in-out infinite;
+    border-radius: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.club-logo:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 30px rgba(0, 255, 255, 1)) 
+            drop-shadow(0 0 60px rgba(0, 255, 255, 0.6));
+}
+
+.club-title {
+    margin: 0;
+    font-size: clamp(24px, 6vw, 48px);
+    font-family: 'Segoe UI', sans-serif;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.9), 
+                 0 0 30px rgba(0, 0, 255, 0.6),
+                 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-weight: 900;
+    letter-spacing: clamp(1px, 0.3vw, 3px);
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #ffffff, #00f2ff, #ffffff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+.club-subtitle {
+    font-size: clamp(12px, 2.5vw, 18px);
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    letter-spacing: clamp(0.5px, 0.2vw, 2px);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 5px;
+}
+
+/* ========================================
+   NAVEGACIÓN
+   ======================================== */
+
+nav {
+    background: linear-gradient(90deg, #232550, #1e40af);
+    color: #fff;
+    text-align: center;
+    padding: 15px 10px;
+    box-shadow: inset 0 -2px 6px rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(90deg, #00f2ff, #0037ff);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+}
+
+nav a:hover {
+    color: #00f2ff;
+    background: rgba(0, 242, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   MENÚ MÓVIL
+   ======================================== */
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%;
+    max-width: 350px;
+    height: 100%;
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    padding: 60px 30px 30px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-nav-overlay.active .mobile-nav {
+    transform: translateX(0);
+}
+
+.mobile-nav-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+.mobile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav-list li {
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInMobile 0.3s ease forwards;
+}
+
+.mobile-nav-list li:nth-child(1) { animation-delay: 0.1s; }
+.mobile-nav-list li:nth-child(2) { animation-delay: 0.2s; }
+.mobile-nav-list li:nth-child(3) { animation-delay: 0.3s; }
+.mobile-nav-list li:nth-child(4) { animation-delay: 0.4s; }
+.mobile-nav-list li:nth-child(5) { animation-delay: 0.5s; }
+.mobile-nav-list li:nth-child(6) { animation-delay: 0.6s; }
+
+.mobile-nav-list a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 15px 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.mobile-nav-list a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-left-color: #00f2ff;
+    transform: translateX(10px);
+    color: #00f2ff;
+}
+
+/* ========================================
+   CONTENEDOR PRINCIPAL
+   ======================================== */
+
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 26, 255, 0.15);
+    border-radius: 16px;
+    animation: fadeIn 1.5s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+/* ========================================
+   TÍTULO DEL TEMARIO MEJORADO
+   ======================================== */
+
+.container h2 {
+    font-size: clamp(32px, 6vw, 48px);
+    margin: 0 0 40px 0;
+    background: linear-gradient(135deg, #2563eb, #60a5fa, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.container h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 5px;
+    background: linear-gradient(90deg, #2563eb, #60a5fa, #3b82f6);
+    border-radius: 3px;
+}
+
+.container h2::before {
+    content: '{ }';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: #60a5fa;
+    font-weight: 400;
+}
+
+/* ========================================
+   LISTA DEL TEMARIO MEJORADA
+   ======================================== */
+
+.container p {
+    margin: 0;
+    padding: 0;
+}
+
+.container ul {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    text-align: left;
+}
+
+.container li {
+    background: linear-gradient(135deg, #ffffff, #f8fafc);
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.container li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #2563eb, #60a5fa);
+    transition: width 0.3s ease;
+}
+
+.container li:hover::before {
+    width: 8px;
+}
+
+.container li:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #60a5fa;
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.15);
+}
+
+/* ========================================
+   ENLACES DEL TEMARIO MEJORADOS
+   ======================================== */
+
+.container a {
+    display: block;
+    padding: 25px 30px;
+    text-decoration: none;
+    color: #1e40af;
+    font-weight: 600;
+    font-size: clamp(16px, 2.5vw, 18px);
+    transition: all 0.3s ease;
+    position: relative;
+    border-radius: 16px;
+}
+
+.container a::after {
+    content: '→';
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: #60a5fa;
+    transition: all 0.3s ease;
+}
+
+.container a:hover {
+    color: #1d4ed8;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(147, 197, 253, 0.05));
+}
+
+.container a:hover::after {
+    transform: translateY(-50%) translateX(5px);
+    color: #2563eb;
+}
+
+/* Efectos especiales para temas específicos */
+.container li:nth-child(1) { /* CONCEPTOS */
+    border-left-color: #ef4444;
+}
+
+.container li:nth-child(1)::before {
+    background: linear-gradient(180deg, #ef4444, #f87171);
+}
+
+.container li:nth-child(2) { /* ENTRADA Y SALIDA */
+    border-left-color: #f59e0b;
+}
+
+.container li:nth-child(2)::before {
+    background: linear-gradient(180deg, #f59e0b, #fbbf24);
+}
+
+.container li:nth-child(3) { /* CICLOS */
+    border-left-color: #10b981;
+}
+
+.container li:nth-child(3)::before {
+    background: linear-gradient(180deg, #10b981, #34d399);
+}
+
+.container li:nth-child(4) { /* CONDICIONALES */
+    border-left-color: #8b5cf6;
+}
+
+.container li:nth-child(4)::before {
+    background: linear-gradient(180deg, #8b5cf6, #a78bfa);
+}
+
+.container li:nth-child(5) { /* ARREGLOS Y CADENAS */
+    border-left-color: #06b6d4;
+}
+
+.container li:nth-child(5)::before {
+    background: linear-gradient(180deg, #06b6d4, #22d3ee);
+}
+
+.container li:nth-child(6) { /* MATRICES */
+    border-left-color: #ec4899;
+}
+
+.container li:nth-child(6)::before {
+    background: linear-gradient(180deg, #ec4899, #f472b6);
+}
+
+/* Publicaciones */
+.post {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 25px;
+    animation: slideUp 0.8s ease forwards;
+}
+
+/* Título principal */
+h1 {
+    margin: 0;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 60px rgba(0, 255, 255, 0.5);
+    }
+}
+
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInMobile {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    
+    .club-section {
+        background-attachment: scroll;
+        padding: clamp(30px, 8vw, 50px) 15px;
+        min-height: clamp(180px, 20vh, 250px);
+    }
+    
+    .club-header {
+        gap: clamp(10px, 2.5vw, 20px);
+    }
+    
+    .club-logo {
+        width: clamp(70px, 15vw, 120px);
+        height: clamp(70px, 15vw, 120px);
+        padding: 8px;
+    }
+    
+    .club-title {
+        font-size: clamp(20px, 7vw, 36px);
+        letter-spacing: clamp(0.5px, 0.25vw, 2px);
+    }
+    
+    .club-subtitle {
+        font-size: clamp(11px, 3vw, 16px);
+    }
+    
+    .container {
+        margin: 15px;
+        padding: 25px 20px;
+        border-radius: 12px;
+    }
+    
+    nav {
+        padding: 10px 5px;
+        position: relative;
+    }
+    
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    .mobile-nav-overlay {
+        display: block;
+    }
+    
+    nav a {
+        display: none;
+    }
+    
+    .container ul {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin: 25px 0;
+    }
+    
+    .container a {
+        padding: 20px 25px;
+        font-size: 16px;
+    }
+    
+    .container a::after {
+        right: 20px;
+        font-size: 18px;
+    }
+    
+    .container h2::before {
+        font-size: 20px;
+        top: -8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .club-section {
+        padding: clamp(25px, 6vw, 40px) 10px;
+        min-height: clamp(160px, 18vh, 220px);
+    }
+    
+    .club-logo {
+        width: clamp(60px, 18vw, 100px);
+        height: clamp(60px, 18vw, 100px);
+        padding: 6px;
+    }
+    
+    .club-title {
+        font-size: clamp(18px, 8vw, 28px);
+        letter-spacing: 1px;
+    }
+    
+    .club-subtitle {
+        font-size: clamp(10px, 3.5vw, 14px);
+    }
+    
+    .container {
+        margin: 10px;
+        padding: 20px 15px;
+    }
+    
+    .container ul {
+        margin: 20px 0;
+        gap: 12px;
+    }
+    
+    .container a {
+        padding: 18px 20px;
+        font-size: 15px;
+    }
+    
+    .container a::after {
+        right: 18px;
+        font-size: 16px;
+    }
+    
+    .container h2 {
+        margin-bottom: 30px;
+    }
+    
+    .container h2::after {
+        width: 100px;
+        height: 4px;
+    }
+    
+    .container h2::before {
+        font-size: 18px;
+        top: -6px;
+    }
+}
+
+/* Mejoras para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .club-section {
+        padding: clamp(50px, 12vw, 70px) 30px;
+        min-height: clamp(220px, 22vh, 280px);
+    }
+    
+    .club-logo {
+        width: clamp(100px, 10vw, 130px);
+        height: clamp(100px, 10vw, 130px);
+    }
+    
+    .club-title {
+        font-size: clamp(32px, 5vw, 42px);
+    }
+}
+
+/* ========================================
+   UTILIDADES
+   ======================================== */
+
+.loaded {
+    overflow-x: hidden;
+}

@@ -1,0 +1,75 @@
+/* src/pages/Faq.css */
+
+.faq-list {
+  max-width: 800px; /* Limita el ancho para que no se vea estirado */
+  margin: 0 auto;   /* Centra el contenedor */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 4rem; /* Espacio antes del footer */
+}
+
+.faq-item {
+  background: var(--bg-card);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Estilo cuando está abierto */
+.faq-item.active {
+  border-color: var(--secondary);
+  box-shadow: var(--shadow);
+}
+
+.faq-question {
+  padding: 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--primary);
+  background: #f8fafc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none; /* Evita que se seleccione el texto al hacer clic rápido */
+}
+
+.faq-question:hover {
+  background: #e0e7ff;
+}
+
+/* El icono de '+' */
+.faq-question::after {
+  content: '+';
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: transform 0.3s;
+}
+
+/* Rotar el icono a 'X' cuando está activo */
+.faq-item.active .faq-question::after {
+  transform: rotate(45deg);
+  color: var(--secondary);
+}
+
+.faq-answer {
+  padding: 1.5rem;
+  color: var(--text-main);
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  
+  /* --- LÓGICA DEL ACORDEÓN --- */
+  display: none; /* Oculto por defecto */
+  animation: slideDown 0.3s ease;
+}
+
+/* Mostrar respuesta cuando el padre tiene la clase 'active' */
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

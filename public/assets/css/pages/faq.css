@@ -1,0 +1,1021 @@
+/* Estilo para el cuerpo de la página del club */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #dbeafe, #f4f4f4);
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    transition: background 1s ease-in-out;
+    min-height: 100vh;
+}
+
+/* Estilo para el encabezado */
+header {
+    background: linear-gradient(to right, #1e3a8a, #3b82f6);
+    color: #ffffff;
+    padding: 0;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Título principal */
+h1 {
+    margin: 0;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Barra de navegación */
+nav {
+    background: linear-gradient(90deg, #232550, #1e40af);
+    color: #fff;
+    text-align: center;
+    padding: 15px 10px;
+    box-shadow: inset 0 -2px 6px rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Enlaces de la barra */
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+/* Efecto láser mejorado */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(90deg, #00f2ff, #0037ff);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+}
+
+nav a:hover {
+    color: #00f2ff;
+    background: rgba(0, 242, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 26, 255, 0.15);
+    border-radius: 16px;
+    animation: fadeIn 1.5s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Sección del club - RUTA CORREGIDA */
+.club-section {
+    background-image: url('../../images/backgrounds/fondo.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+    padding: clamp(40px, 10vw, 80px) 20px;
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+    text-align: center;
+    animation: pulseGlow 4s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: clamp(200px, 25vh, 300px);
+}
+
+/* Overlay para mejor legibilidad */
+.club-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.club-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Título de la sección del club */
+.club-section h1 {
+    font-size: clamp(32px, 8vw, 60px);
+    font-family: 'Segoe UI', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 0 0 12px rgba(0, 255, 255, 0.8), 0 0 24px rgba(0, 0, 255, 0.5);
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.club-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(15px, 3vw, 25px);
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.club-logo {
+    width: clamp(80px, 12vw, 150px);
+    height: clamp(80px, 12vw, 150px);
+    filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8))
+            drop-shadow(0 0 40px rgba(0, 255, 255, 0.4));
+    transition: all 0.4s ease;
+    animation: logoFloat 3s ease-in-out infinite;
+    border-radius: 100%; /* Logo circular */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.club-logo:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 30px rgba(0, 255, 255, 1))
+            drop-shadow(0 0 60px rgba(0, 255, 255, 0.6));
+}
+
+.club-title {
+    margin: 0;
+    font-size: clamp(24px, 6vw, 48px);
+    font-family: 'Segoe UI', sans-serif;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.9), 
+                 0 0 30px rgba(0, 0, 255, 0.6),
+                 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-weight: 900;
+    letter-spacing: clamp(1px, 0.3vw, 3px);
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #ffffff, #00f2ff, #ffffff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+.club-subtitle {
+    font-size: clamp(12px, 2.5vw, 18px);
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    letter-spacing: clamp(0.5px, 0.2vw, 2px);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 5px;
+}
+
+/* Enlaces normales mejorados */
+a {
+    text-decoration: none;
+    color: #2563eb;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+a:hover {
+    color: #1d4ed8;
+    border-bottom: 1px solid #1d4ed8;
+    transform: translateY(-1px);
+}
+
+a:active {
+    color: #1e40af;
+}
+
+/* CONTENEDOR FAQ MEJORADO */
+.faq-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248, 250, 252, 0.98));
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0, 26, 255, 0.1);
+    padding: 40px 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 1.5s ease;
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #2563eb, #60a5fa, #3b82f6);
+}
+
+.faq-container h2 {
+    text-align: center;
+    font-size: clamp(28px, 5vw, 36px);
+    color: #1e3a8a;
+    margin-bottom: 35px;
+    font-weight: 700;
+    position: relative;
+}
+
+.faq-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #2563eb, #60a5fa);
+    border-radius: 2px;
+}
+
+/* ITEMS FAQ MEJORADOS */
+.faq-item {
+    margin-bottom: 25px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.faq-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+    border-color: #93c5fd;
+}
+
+.faq-item.active {
+    border-color: #2563eb;
+    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.2);
+}
+
+/* PREGUNTAS FAQ MEJORADAS */
+.faq-question {
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0;
+    font-size: clamp(16px, 3vw, 20px);
+    color: #1e3a8a;
+    transition: all 0.3s ease;
+    padding: 25px 30px;
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    position: relative;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.faq-question::after {
+    content: '+';
+    font-size: 24px;
+    font-weight: bold;
+    color: #2563eb;
+    transition: all 0.3s ease;
+    transform: rotate(0deg);
+}
+
+.faq-item.active .faq-question::after {
+    transform: rotate(45deg);
+    color: #1e40af;
+}
+
+.faq-question:hover {
+    background: linear-gradient(135deg, #e0e7ff, #ddd6fe);
+    color: #1e40af;
+}
+
+/* RESPUESTAS FAQ MEJORADAS */
+.faq-answer {
+    display: none;
+    padding: 0 30px 25px 30px;
+    color: #374151;
+    font-size: clamp(14px, 2.5vw, 17px);
+    line-height: 1.7;
+    background: white;
+    border-top: 1px solid #f1f5f9;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+    animation: slideDown 0.4s ease;
+}
+
+.faq-answer ul {
+    margin: 15px 0;
+    padding-left: 25px;
+}
+
+.faq-answer li {
+    margin-bottom: 8px;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.faq-answer a {
+    color: #2563eb;
+    font-weight: 500;
+}
+
+.faq-answer a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+/* 🎞️ Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+        padding-bottom: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 500px;
+        padding-bottom: 25px;
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 60px rgba(0, 255, 255, 0.5);
+    }
+}
+
+/* 📱 RESPONSIVE DESIGN MEJORADO */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    
+    .club-section {
+        background-attachment: scroll;
+        padding: 60px 20px;
+    }
+    
+    .container {
+        margin: 15px;
+        padding: 20px 15px;
+        border-radius: 12px;
+    }
+    
+    nav {
+        padding: 10px 5px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    nav a {
+        margin: 4px 6px;
+        font-size: 14px;
+        padding: 10px 16px;
+        border-radius: 20px;
+        background: rgba(30, 58, 138, 0.1);
+        min-width: 100px;
+        text-align: center;
+    }
+    
+    .faq-container {
+        margin: 25px 15px;
+        padding: 25px 20px;
+        border-radius: 16px;
+    }
+    
+    .faq-question {
+        padding: 20px;
+        font-size: 16px;
+    }
+    
+    .faq-question::after {
+        font-size: 20px;
+    }
+    
+    .faq-answer {
+        padding: 0 20px 20px 20px;
+        font-size: 15px;
+    }
+    
+    .faq-answer ul {
+        padding-left: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .club-section {
+        padding: 40px 15px;
+    }
+    
+    .container {
+        margin: 10px;
+        padding: 15px 10px;
+    }
+    
+    nav a {
+        font-size: 13px;
+        padding: 8px 12px;
+        min-width: 90px;
+    }
+    
+    .faq-container {
+        margin: 20px 10px;
+        padding: 20px 15px;
+    }
+    
+    .faq-question {
+        padding: 15px;
+        font-size: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .faq-question::after {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 18px;
+    }
+    
+    .faq-answer {
+        padding: 0 15px 15px 15px;
+        font-size: 14px;
+    }
+    
+    .faq-answer ul {
+        padding-left: 18px;
+    }
+    
+    .faq-item {
+        margin-bottom: 20px;
+    }
+}
+/*---------------NEW footer IMPLEMTS----------------------------*/
+
+
+/* Logo del club (para cuando se implemente) */
+.club-logo {
+    width: clamp(80px, 12vw, 150px);
+    height: clamp(80px, 12vw, 150px);
+    filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8))
+            drop-shadow(0 0 40px rgba(0, 255, 255, 0.4));
+    transition: all 0.4s ease;
+    animation: logoFloat 3s ease-in-out infinite;
+    border-radius: 100%; /* Logo circular */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.club-logo:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 30px rgba(0, 255, 255, 1))
+            drop-shadow(0 0 60px rgba(0, 255, 255, 0.6));
+}
+
+.club-title {
+    margin: 0;
+    font-size: clamp(32px, 8vw, 60px);
+    font-family: 'Segoe UI', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 0 0 12px rgba(0, 255, 255, 0.8), 0 0 24px rgba(0, 0, 255, 0.5);
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+/* ========================================
+   ESTILOS PARA MENÚ MÓVIL
+   ======================================== */
+
+/* Botón hamburguesa */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Overlay del menú móvil */
+.mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Contenedor del menú móvil */
+.mobile-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%;
+    max-width: 350px;
+    height: 100%;
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    padding: 60px 30px 30px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-nav-overlay.active .mobile-nav {
+    transform: translateX(0);
+}
+
+/* Botón de cerrar */
+.mobile-nav-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Lista del menú móvil */
+.mobile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav-list a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-left-color: #00f2ff;
+    transform: translateX(10px);
+    color: #00f2ff;
+}
+
+.mobile-nav-list li {
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInMobile 0.3s ease forwards;
+}
+
+.mobile-nav-list li:nth-child(1) { animation-delay: 0.1s; }
+.mobile-nav-list li:nth-child(2) { animation-delay: 0.2s; }
+.mobile-nav-list li:nth-child(3) { animation-delay: 0.3s; }
+.mobile-nav-list li:nth-child(4) { animation-delay: 0.4s; }
+.mobile-nav-list li:nth-child(5) { animation-delay: 0.5s; }
+.mobile-nav-list li:nth-child(6) { animation-delay: 0.6s; }
+
+.mobile-nav-list a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 15px 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.mobile-nav-list a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-left-color: #00f2ff;
+    transform: translateX(10px);
+    color: #00f2ff;
+}
+
+/* Animación para los elementos del menú */
+@keyframes slideInMobile {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 60px rgba(0, 255, 255, 0.5);
+    }
+}
+
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInMobile {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Mostrar menú hamburguesa solo en móvil */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .mobile-nav-overlay {
+        display: block;
+    }
+    
+    /* Ocultar navegación normal en móvil */
+    nav {
+        position: relative;
+    }
+    
+    nav a {
+        display: none;
+    }
+
+    /* Sección del club con logo y nombre */
+.club-section {
+    background-image: url('../../images/backgrounds/fondo.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+    padding: clamp(40px, 10vw, 80px) 20px;
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+    text-align: center;
+    animation: pulseGlow 4s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: clamp(200px, 25vh, 300px);
+}
+
+/* Overlay para mejor legibilidad */
+.club-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.club-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Contenedor del logo y título */
+.club-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(15px, 3vw, 25px);
+    animation: fadeInUp 1.2s ease-out;
+}
+
+/* Logo del club */
+.club-logo {
+    width: clamp(80px, 12vw, 150px);
+    height: clamp(80px, 12vw, 150px);
+    filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8))
+            drop-shadow(0 0 40px rgba(0, 255, 255, 0.4));
+    transition: all 0.4s ease;
+    animation: logoFloat 3s ease-in-out infinite;
+    border-radius: 100%; /* Logo circular */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.club-logo:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 30px rgba(0, 255, 255, 1))
+            drop-shadow(0 0 60px rgba(0, 255, 255, 0.6));
+}
+
+/* Título del club */
+.club-title {
+    margin: 0;
+    font-size: clamp(24px, 6vw, 48px);
+    font-family: 'Segoe UI', sans-serif;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.9), 
+                 0 0 30px rgba(0, 0, 255, 0.6),
+                 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-weight: 900;
+    letter-spacing: clamp(1px, 0.3vw, 3px);
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #ffffff, #00f2ff, #ffffff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Subtítulo opcional */
+.club-subtitle {
+    font-size: clamp(12px, 2.5vw, 18px);
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    letter-spacing: clamp(0.5px, 0.2vw, 2px);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 5px;
+}
+
+/* Animaciones */
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 60px rgba(0, 255, 255, 0.5);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .club-section {
+        background-attachment: scroll;
+        padding: clamp(30px, 8vw, 50px) 15px;
+        min-height: clamp(180px, 20vh, 250px);
+    }
+    
+    .club-header {
+        gap: clamp(10px, 2.5vw, 20px);
+    }
+    
+    .club-logo {
+    width: clamp(80px, 12vw, 150px);
+    height: clamp(80px, 12vw, 150px);
+    filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8))
+            drop-shadow(0 0 40px rgba(0, 255, 255, 0.4));
+    transition: all 0.4s ease;
+    animation: logoFloat 3s ease-in-out infinite;
+    border-radius: 100%; /* Logo circular */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+    
+    .club-title {
+        font-size: clamp(20px, 7vw, 36px);
+        letter-spacing: clamp(0.5px, 0.25vw, 2px);
+    }
+    
+    .club-subtitle {
+        font-size: clamp(11px, 3vw, 16px);
+    }
+}
+
+@media (max-width: 480px) {
+    .club-section {
+        padding: clamp(25px, 6vw, 40px) 10px;
+        min-height: clamp(160px, 18vh, 220px);
+    }
+    
+    .club-logo {
+    width: clamp(80px, 12vw, 150px);
+    height: clamp(80px, 12vw, 150px);
+    filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8))
+            drop-shadow(0 0 40px rgba(0, 255, 255, 0.4));
+    transition: all 0.4s ease;
+    animation: logoFloat 3s ease-in-out infinite;
+    border-radius: 100%; /* Logo circular */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+    
+    .club-title {
+        font-size: clamp(18px, 8vw, 28px);
+        letter-spacing: 1px;
+    }
+    
+    .club-subtitle {
+        font-size: clamp(10px, 3.5vw, 14px);
+    }
+}
+
+/* Mejoras para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .club-section {
+        padding: clamp(50px, 12vw, 70px) 30px;
+        min-height: clamp(220px, 22vh, 280px);
+    }
+    
+    .club-logo {
+    width: clamp(80px, 12vw, 150px);
+    height: clamp(80px, 12vw, 150px);
+    filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8))
+            drop-shadow(0 0 40px rgba(0, 255, 255, 0.4));
+    transition: all 0.4s ease;
+    animation: logoFloat 3s ease-in-out infinite;
+    border-radius: 100%; /* Logo circular */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+    
+    .club-title {
+        font-size: clamp(32px, 5vw, 42px);
+    }
+}
+}
+
+
+.loaded {
+    overflow-x: hidden;
+}

@@ -1,0 +1,178 @@
+/* src/pages/Home.css */
+
+.mejores-del-club, .nosotros-section {
+  margin-bottom: 4rem;
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Grid responsivo para las tarjetas (Top Coders) */
+.destacados {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 0 10px;
+}
+
+/* --- Estilos de la Sección Nosotros --- */
+.nosotros-section {
+  background: white; /* O usa tu gradiente: linear-gradient(135deg, #f8fafc, #e2e8f0) */
+  padding: 3rem 0;
+  margin-top: 4rem;
+  position: relative;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.nosotros-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nosotros-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.nosotros-text p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  text-align: justify;
+}
+
+.nosotros-text strong {
+  color: var(--primary);
+}
+
+/* Estadísticas */
+.nosotros-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+  flex: 1;
+  min-width: 100px;
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--secondary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+/* Imagen de Nosotros */
+.nosotros-image {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  height: 100%;
+  max-height: 400px;
+}
+
+.nosotros-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.nosotros-image:hover img {
+  transform: scale(1.05);
+}
+
+/* --- Sección Valores (Lo que faltaba) --- */
+.nosotros-valores h3 {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.valor-item {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.valor-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
+}
+
+.valor-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.valor-item h4 {
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.valor-item p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .nosotros-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .nosotros-section {
+    padding: 2rem 0;
+  }
+  
+  .destacados {
+    grid-template-columns: 1fr;
+  }
+  
+  .nosotros-stats {
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,61 @@
+/* src/pages/Temario.css */
+
+.temario-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.temario-list li {
+  margin: 0;
+}
+
+.temario-list a {
+  display: block;
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border-left: 5px solid var(--secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.temario-list a:hover {
+  transform: translateY(-5px);
+  background: white;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  color: var(--secondary);
+}
+
+/* Efecto visual de flecha al hacer hover */
+.temario-list a::after {
+  content: '→';
+  position: absolute;
+  right: 20px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transform: translateX(-10px);
+}
+
+.temario-list a:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Colores variados para los items (opcional, estilo arcoiris) */
+.temario-list li:nth-child(1) a { border-left-color: #ef4444; } /* Rojo */
+.temario-list li:nth-child(2) a { border-left-color: #f59e0b; } /* Amarillo */
+.temario-list li:nth-child(3) a { border-left-color: #10b981; } /* Verde */
+.temario-list li:nth-child(4) a { border-left-color: #3b82f6; } /* Azul */
+.temario-list li:nth-child(5) a { border-left-color: #6366f1; } /* Indigo */
+.temario-list li:nth-child(6) a { border-left-color: #8b5cf6; } /* Violeta */
+.temario-list li:nth-child(7) a { border-left-color: #ec4899; } /* Rosa */

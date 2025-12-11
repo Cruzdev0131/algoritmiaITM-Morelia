@@ -1,0 +1,30 @@
+
+
+/* Redes sociales grandes específicas de la página Join */
+/* Usamos una clase específica para no chocar con el footer si es necesario */
+.join-socials {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.join-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  font-size: 2.5rem; /* Tamaño para react-icons */
+}
+
+.join-socials a:hover {
+  transform: translateY(-5px) scale(1.1);
+  color: var(--accent);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
