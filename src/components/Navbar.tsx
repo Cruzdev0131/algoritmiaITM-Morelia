@@ -19,16 +19,30 @@ function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
-  useEffect(() => {
+useEffect(() => {
     let timeoutId: number | null = null;
+    let ticking = false;
     
     const handleScroll = () => {
-      if (timeoutId) return;
-      
-      timeoutId = setTimeout(() => {
-        setIsScrolled(window.scrollY > 50);
-        timeoutId = null;
-      }, 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          // Añade histéresis: requiere más scroll para volver a "top"
+          if (isScrolled) {
+            // Necesita bajar a menos de 30px para volver a top
+            if (scrollY < 30) {
+              setIsScrolled(false);
+            }
+          } else {
+            // Necesita subir a más de 70px para cambiar a scrolled
+            if (scrollY > 70) {
+              setIsScrolled(true);
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -36,7 +50,7 @@ function Navbar() {
       window.removeEventListener('scroll', handleScroll);
       if (timeoutId) clearTimeout(timeoutId);
     };
-  }, []);
+  }, [isScrolled]); // Añadimos isScrolled como dependencia
 
   // ... (Tus definiciones de navLinks y transitions se quedan igual) ...
   
