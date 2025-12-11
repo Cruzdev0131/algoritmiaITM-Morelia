@@ -2,7 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Home from '../pages/home';
 import Blog from '../pages/Blog';
-import About from '../pages/about';
+import About from '../pages/About';
 import Faq from '../pages/Faq';
 import Join from '../pages/Join';
 import Temario from '../pages/Temario';
