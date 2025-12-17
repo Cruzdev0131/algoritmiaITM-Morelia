@@ -1,0 +1,78 @@
+/* src/pages/TopicPage.css */
+.topic-page-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.topic-content h2 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.topic-content h3 {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--secondary);
+}
+
+/* Base style for PRE block (el contenedor del código) */
+.topic-content pre {
+  /* 🛑 CLAVE para evitar el desborde horizontal en el layout */
+  max-width: 100%;
+  overflow-x: auto; /* Permite desplazamiento horizontal si el código es largo */
+  
+  background: #1e293b; /* Fondo oscuro para simular un editor */
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+  border: 1px solid #475569;
+  box-shadow: var(--shadow);
+}
+
+/* Base style for CODE elements (el texto del código) */
+.topic-content code {
+  color: #e2e8f0; /* Color claro para el texto */
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  
+  /* CLAVE: Asegura que el código se muestre en bloques */
+  display: block; 
+  white-space: pre; 
+}
+
+/* Estilos de párrafos y listas en el tema */
+.topic-content p {
+  color: var(--text-main);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  text-align: justify;
+  /* Seguridad para texto largo que no es código */
+  word-break: break-word; 
+  word-wrap: break-word;
+}
+
+.topic-content ul {
+  padding-left: 20px;
+}
+
+.topic-content li {
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+
+@media (max-width: 600px) {
+  .topic-content pre {
+    padding: 0.8rem; /* Reducir padding en móvil */
+    margin: 1rem 0;
+  }
+  
+  .topic-content code {
+    font-size: 0.8rem; /* Reducir fuente para aprovechar mejor el espacio */
+    line-height: 1.4;
+  }
+}

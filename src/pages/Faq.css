@@ -1,8 +1,9 @@
 /* src/pages/Faq.css */
 
 .faq-list {
-  max-width: 800px; /* Limita el ancho para que no se vea estirado */
-  margin: 0 auto;   /* Centra el contenedor */
+  max-width: 1100px; 
+
+margin: 6rem auto 4rem auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;

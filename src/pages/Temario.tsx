@@ -1,13 +1,15 @@
+// src/pages/Temario.tsx (Actualizado)
 import './Temario.css';
 import { Link } from 'react-router-dom';
 
 function Temario() {
-  const topics = [
+const topics = [
     { title: "CONCEPTOS BÁSICOS DE PROGRAMACIÓN", path: "conceptos", icon: "💡" },
     { title: "ENTRADA Y SALIDA DE DATOS", path: "entrada-salida", icon: "⌨️" },
     { title: "CICLOS Y ESTRUCTURAS REPETITIVAS", path: "ciclos", icon: "🔄" },
     { title: "CONDICIONALES Y ESTRUCTURAS DE DECISIÓN", path: "condicionales", icon: "🔀" },
     { title: "ARREGLOS Y CADENAS DE CARACTERES", path: "cadenas-arreglos", icon: "📚" },
+    { title: "VECTORES (ARREGLOS DINÁMICOS)", path: "vectores", icon: "📈" }, // Correcto: "vectores"
     { title: "MATRICES Y ARREGLOS BIDIMENSIONALES", path: "matrices", icon: "⬛" },
     { title: "ALGORITMOS DE BÚSQUEDA", path: "algoritmos-busqueda", icon: "🔍" },
     { title: "ESTRUCTURAS DE DATOS", path: "estructuras", icon: "🏗️" },
@@ -20,7 +22,6 @@ function Temario() {
       <h2>Temario de Estudio</h2>
       <p>Explora nuestros temas de programación competitiva organizados por nivel de dificultad.</p>
       
-      {/* Lista dinámica: Mucho más limpia que escribir <li> uno por uno */}
       <ul className="temario-list">
         {topics.map((topic, index) => (
           <li key={index}>

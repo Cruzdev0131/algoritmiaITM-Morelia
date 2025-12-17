@@ -1,0 +1,130 @@
+/* src/components/ExpandableCard.css */
+
+/* --- Tarjeta Compacta --- */
+.expandable-card-compact {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-top: 4px solid var(--secondary);
+  position: relative;
+  /* Importante para que framer-motion calcule bien */
+  transform-style: preserve-3d; 
+}
+
+.card-icon-wrapper {
+  font-size: 2.5rem;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.card-summary {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.click-hint {
+  margin-top: auto;
+  font-size: 0.8rem;
+  color: var(--primary);
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+/* --- Overlay (Fondo Oscuro) --- */
+.card-overlay-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000; /* Por encima del Navbar (1000) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.backdrop-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+}
+
+/* --- Tarjeta Expandida --- */
+.expandable-card-open {
+  background: white;
+  width: 100%;
+  max-width: 600px;
+  max-height: 80vh; /* Para que no sea más alta que la pantalla */
+  border-radius: 20px;
+  padding: 2.5rem;
+  position: relative;
+  z-index: 2001;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: #f1f5f9;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  transition: background 0.2s;
+}
+
+.close-btn:hover {
+  background: #e2e8f0;
+}
+
+.card-icon-wrapper.large {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.card-title-large {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.card-content-scroll {
+  overflow-y: auto; /* Scroll interno si el texto es muy largo */
+  padding-right: 0.5rem;
+}
+
+.card-summary-bold {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+}
+
+.card-details-body {
+  color: var(--text-light);
+  line-height: 1.7;
+}

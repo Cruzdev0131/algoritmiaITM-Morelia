@@ -1,267 +1,247 @@
 /* src/components/Navbar.css */
 
-/* --- CONTENEDOR PRINCIPAL (STICKY) --- */
+:root {
+  --nav-height-initial: 90px;
+  --nav-height-scrolled: 70px;
+}
+
 .navbar-wrapper {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 1000;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  box-shadow: var(--shadow);
+  left: 0;
   width: 100%;
-  /* ❌ ELIMINADO: transition (Framer Motion lo maneja) */
+  z-index: 1000;
+  
+  /* COLOR ORIGINAL: Usaba rgba manual. 
+     NUEVO: Usamos el mismo tono que var(--primary) (#1e3a8a) con transparencia */
+background-color: rgba(30, 58, 138, 0.85);  
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* TRANSICIÓN SUAVE: Esta curva evita el golpe seco */
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Estado Scrolled */
+.navbar-wrapper.scrolled {
+  /* COLOR NUEVO: Un azul muy profundo derivado de tu paleta, en lugar de negro/gris */
+  background: rgba(30, 58, 138, 0.95); 
+  
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Sombra más suave */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0 1.5rem;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  
+  height: var(--nav-height-initial);
+  /* Sincronizamos la transición de altura con el wrapper */
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-wrapper.scrolled .navbar-container {
+  height: var(--nav-height-scrolled);
+}
+
+/* --- Branding --- */
+.club-branding {
+  display: flex;
   align-items: center;
   gap: 1rem;
-  /* ❌ ELIMINADO: transition (Framer Motion lo maneja) */
-}
-
-/* --- ESTILOS DEL LOGO Y TEXTO --- */
-.club-branding {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.logo-link {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem; /* ✅ Gap más compacto */
   text-decoration: none;
   color: white;
-  white-space: nowrap; /* ✅ Evita que el texto se rompa */
+  min-width: max-content;
 }
 
 .club-logo {
-  height: 60px;
-  width: 60px;
-  background: rgba(255,255,255,0.1);
+  height: 48px;
+  width: 48px;
   border-radius: 50%;
-  padding: 5px;
-  /* ❌ ELIMINADO: transition (Framer Motion lo maneja) */
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  /* Animación suave para el logo */
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s;
+}
+
+.navbar-wrapper.scrolled .club-logo {
+  transform: scale(0.85);
+  border-color: var(--secondary); /* Usa tu color secundario cyan/azul claro */
 }
 
 .club-info {
-  text-align: center;
-  /* ❌ ELIMINADO: transition (Framer Motion lo maneja) */
-}
-
-.club-title { 
-  margin: 0; 
-  font-size: 1.8rem; 
-  font-weight: 800; 
-  text-transform: uppercase; 
-  color: white; 
-  letter-spacing: 1px; 
-}
-
-.club-subtitle { 
-  font-size: 0.9rem; 
-  margin: 0; 
-  opacity: 0.9; 
-  color: rgba(255,255,255,0.9); 
-}
-
-/* Texto abreviado (ahora como elemento React, no ::after) */
-.club-abbreviation {
-  font-weight: 800;
-  font-size: 1.4rem; /* ✅ Ligeramente más pequeño para compactar */
-  color: white;
-  white-space: nowrap;
-}
-
-/* --- ESTILOS DE NAVEGACIÓN (LINKS) --- */
-.desktop-nav {
-  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  /* ❌ ELIMINADO: transition (Framer Motion lo maneja) */
+  /* Evita saltos asegurando que el contenedor no cambie de ancho bruscamente */
+  min-height: 40px; 
+}
+
+.club-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  margin: 0;
+  color: #fff;
+}
+
+.club-subtitle {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  line-height: 1.2;
+  font-weight: 400;
+  
+  /* PROPIEDADES PARA ANIMAR EL "BRINCO" */
+  max-height: 20px; /* Altura máxima inicial */
+  opacity: 1;
+  transform: translateY(0);
+  
+  /* Misma duración que el navbar para ir en sincronía */
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ocultar subtítulo suavemente */
+.navbar-wrapper.scrolled .club-subtitle {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  transform: translateY(-5px); /* Pequeño movimiento hacia arriba */
+  pointer-events: none;
+}
+
+/* --- Navegación Desktop --- */
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: block;
+  }
 }
 
 .desktop-links {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  background: rgba(0,0,0,0.2);
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  /* ❌ ELIMINADO: transition - excepto para hovers */
+  gap: 0.5rem;
+  /* Fondo estilo cristal sutil */
+  background: rgba(255, 255, 255, 0.05); 
+  padding: 0.3rem;
+  border-radius: 99px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+}
+
+.navbar-wrapper.scrolled .desktop-links {
+   /* Opcional: Oscurecer un poco el fondo de los links al bajar */
+   background: rgba(0, 0, 0, 0.1);
 }
 
 .desktop-links a {
-  color: white;
-  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
   padding: 0.5rem 1rem;
-  border-radius: 20px;
-  transition: background 0.3s, color 0.3s; /* ✅ Solo para hover */
+  border-radius: 99px;
   text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .desktop-links a:hover {
-  background: rgba(255,255,255,0.2);
-  color: var(--accent);
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* =========================================
-   ESTADO SCROLLED (CLASES PARA VARIANTS)
-   ========================================= */
-
-.navbar-wrapper.scrolled {
-  background: rgba(30, 58, 138, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-}
-
-/* NOTA: Los cambios de layout ahora se manejan con variants de Framer Motion
-   en lugar de clases CSS. Estas clases sirven solo para estilos visuales. */
-
-/* --- RESPONSIVIDAD (MÓVIL) --- */
-.hamburger-menu { 
-  display: none; 
-}
-
-.mobile-nav-overlay { 
-  display: none; 
-} 
-
-@media (max-width: 768px) {
-  .club-branding { 
-    width: auto; 
-    justify-content: flex-start; 
-  }
-  
-  .club-info { 
-    display: none; 
-  }
-  
-  .club-logo { 
-    height: 45px; 
-    width: 45px; 
-  }
-
-  .desktop-nav { 
-    display: none; 
-  }
-  
-  .hamburger-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    z-index: 10;
-  }
-
-  .hamburger-line { 
-    width: 25px; 
-    height: 3px; 
-    background: white; 
-    border-radius: 2px; 
-    transition: transform 0.3s, opacity 0.3s; /* ✅ Solo para hamburguesa */
-  }
-  
-  .hamburger-menu.active .hamburger-line:nth-child(1) { 
-    transform: rotate(45deg) translate(5px, 6px); 
-  }
-  .hamburger-menu.active .hamburger-line:nth-child(2) { 
-    opacity: 0; 
-  }
-  .hamburger-menu.active .hamburger-line:nth-child(3) { 
-    transform: rotate(-45deg) translate(5px, -6px); 
-  }
-
-  /* Estilos del Menú Móvil */
-  .mobile-nav-overlay {
-    display: block; 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    background: rgba(0,0,0,0.5); 
-    z-index: 1001; 
-    opacity: 0; 
-    visibility: hidden; 
-    transition: opacity 0.3s, visibility 0.3s;
-  }
-
-  .mobile-nav-overlay.active { 
-    opacity: 1; 
-    visibility: visible; 
-  }
-  
-  .mobile-nav {
-    position: fixed; 
-    top: 0; 
-    right: -250px; 
-    width: 250px; 
-    height: 100vh;
-    background: var(--primary); 
-    padding: 2rem; 
-    transition: right 0.3s ease;
-    display: flex; 
-    flex-direction: column; 
-    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
-  }
-
-  .mobile-nav-overlay.active .mobile-nav { 
-    right: 0; 
-  }
-  
-  .mobile-nav-list { 
-    list-style: none; 
-    padding: 0; 
-    margin-top: 3rem; 
-  }
-
-  .mobile-nav-list li { 
-    margin-bottom: 1.5rem; 
-  }
-
-  .mobile-nav-list a { 
-    color: white; 
-    font-size: 1.2rem; 
-    font-weight: 600; 
-    display: block;
-    text-decoration: none;
-  }
-
-  .mobile-nav-close { 
-    position: absolute; 
-    top: 15px; 
-    right: 20px; 
-    background: none; 
-    border: none; 
-    color: white; 
-    font-size: 2rem;
-    cursor: pointer;
-  }
-}
-
-/* ✅ Will-change para optimización GPU (opcional pero recomendado) */
-.navbar-wrapper {
-  will-change: background, box-shadow;
-}
-
-.navbar-container {
-  will-change: transform;
-}
-
-/* --- ESTILO PARA EL LINK ACTIVO --- */
-.desktop-links a.active-link,
-.mobile-nav-list a.active-link {
-  color: var(--accent);
-  background: rgba(255, 255, 255, 0.2);
+.desktop-links a.active-link {
+  background: white;
+  color: var(--primary); /* Texto azul oscuro institucional */
   font-weight: 700;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* --- Menú Hamburguesa --- */
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .hamburger-menu { display: none; }
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background: white;
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  transform-origin: 1px;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(1) { transform: rotate(45deg); }
+.hamburger-menu.active .hamburger-line:nth-child(2) { opacity: 0; transform: translateX(20px); }
+.hamburger-menu.active .hamburger-line:nth-child(3) { transform: rotate(-45deg); }
+
+/* --- Menú Móvil Overlay --- */
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 75%;
+  max-width: 300px;
+  height: 100vh;
+  background: var(--bg-card);
+  padding: 6rem 2rem 2rem 2rem;
+  box-shadow: -5px 0 25px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-nav-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-nav-list a {
+  font-size: 1.2rem;
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 600;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.mobile-nav-list a.active, .mobile-nav-list a:hover {
+  color: var(--primary);
+  background: #f1f5f9;
 }
