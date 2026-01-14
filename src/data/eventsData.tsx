@@ -1,6 +1,6 @@
 // src/data/eventsData.tsx
 import { type ReactNode } from 'react';
-import { FaTrophy, FaCalendarAlt, FaClock, FaMapMarkerAlt, FaBrain } from 'react-icons/fa';
+import {  FaCalendarAlt, FaClock, FaMapMarkerAlt, FaBrain } from 'react-icons/fa';
 
 // Definimos la estructura de un Evento Próximo
 export interface UpcomingEvent {
