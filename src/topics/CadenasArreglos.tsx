@@ -1,8 +1,54 @@
 // src/topics/CadenasArreglos.tsx
 import PageTransition from '../components/PageTransition';
 import { Reveal } from '../components/Reveal';
+import { CodeBlock } from '../components/CodeBlock'; // <--- 1. Importar
 
 function CadenasArreglos() {
+
+  // --- SNIPPETS DE CÓDIGO ---
+  
+  const arraySyntax = `tipo nombreArreglo[tamaño];`;
+
+  const arrayExample = `#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int numeros[5]; // Declaración de un arreglo de enteros con tamaño 5
+    numeros[0] = 1; // Asignar valor al primer elemento
+    numeros[1] = 2; // Asignar valor al segundo elemento
+    // ...
+    return 0;
+}`;
+
+  const stringExample = `#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    string miCadena = "Hola Cetis120";
+    cout << miCadena;
+    return 0;
+    //esto te imprime Hola Cetis120
+}`;
+
+  const charArrayExample = `#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    char miCadena[] = "Hola, mundo";
+    cout << miCadena;
+    return 0;
+}`;
+
+  const iterationExample = `//declaras tu variable de string y un contador que aumenta su valor cada iteracion.
+string a; int cont=0; cin >> a;
+
+//en un for haremos uso de una funcion de libreria llamada .size() o .length()
+//esto hace que automaticamente la condicion del for tome el tamaño del arreglo
+for(int i=0; i < a.size(); i++) {
+    cont++;
+}
+cout << cont;`;
+
   return (
     <PageTransition>
       <div className="post topic-content">
@@ -18,28 +64,12 @@ function CadenasArreglos() {
           <p>
             Un arreglo es una colección de elementos del mismo tipo. Puedes acceder a cada elemento individualmente mediante un índice. La declaración de un arreglo se hace de la siguiente manera:
           </p>
-          <pre>
-            <code>
-              tipo nombreArreglo[tamaño];
-            </code>
-          </pre>
+          <CodeBlock code={arraySyntax} />
+          
           <p>
             Ejemplo de declaración de un arreglo:
           </p>
-          <pre>
-            <code className="language-cpp">
-              #include &lt;bits/stdc++.h&gt;
-              using namespace std;
-
-              int main() {'{'}
-                  int numeros[5]; // Declaración de un arreglo de enteros con tamaño 5
-                  numeros[0] = 1; // Asignar valor al primer elemento
-                  numeros[1] = 2; // Asignar valor al segundo elemento
-                  // ...
-                  return 0;
-              {'}'}
-            </code>
-          </pre>
+          <CodeBlock code={arrayExample} />
         </Reveal>
 
         <Reveal>
@@ -47,44 +77,22 @@ function CadenasArreglos() {
           <p>
             Las cadenas de caracteres en C++ son arreglos de caracteres terminados con un carácter nulo (<code>'\0'</code>). Puedes trabajar con cadenas
             utilizando el tipo de dato <code>string</code> o arreglos de caracteres pero es poco
-            recomendado a la hora de estar en programacion competitiva. Ejemplo de declaración de una
+            recomendado a la hora de estar en programación competitiva. Ejemplo de declaración de una
             cadena utilizando <code>string namevariable</code>:
           </p>
-          <pre>
-            <code className="language-cpp">
-              #include &lt;bits/stdc++.h&gt;
-              using namespace std;
-
-              int main() {'{'}
-                  string miCadena = "Hola Cetis120";
-                  cout {"<"}{"<"} miCadena;
-                  return 0;
-                  //esto te imprime Hola Cetis120
-              {'}'}
-            </code>
-          </pre>
+          <CodeBlock code={stringExample} />
+          
           <p>
             Ejemplo de declaración de una cadena utilizando un arreglo de caracteres:
           </p>
-          <pre>
-            <code className="language-cpp">
-              #include &lt;bits/stdc++.h&gt;
-              using namespace std;
-
-              int main() {'{'}
-                  char miCadena[] = "Hola, mundo";
-                  cout {"<"}{"<"} miCadena;
-                  return 0;
-              {'}'}
-            </code>
-          </pre>
+          <CodeBlock code={charArrayExample} />
         </Reveal>
 
         <Reveal>
           <h3>Operaciones con Cadenas</h3>
           <p>
             Puedes realizar varias operaciones con cadenas, como concatenación, longitud, búsqueda de subcadenas, etc. La clase <code>std::string</code> proporciona numerosos métodos para trabajar con cadenas de manera eficiente.
-            <br/> Te invito a que indagues mas de estas otras formas. :D
+            <br/> Te invito a que indagues más de estas otras formas. :D
           </p>
         </Reveal>
 
@@ -93,20 +101,9 @@ function CadenasArreglos() {
           <p>
             Puedes utilizar ciclos <code>for</code> o <code>while</code> para iterar a través de arreglos y cadenas. Al acceder a los elementos mediante un índice, puedes procesar cada elemento por separado.
           </p>
-          <p>Un ejemplo muy claro es que si necesitas saber cuantas letras tiene una palabras, es muy facil
-            solo tienes que hacer lo siguiente:
+          <p>Un ejemplo muy claro es que si necesitas saber cuántas letras tiene una palabra, es muy fácil, solo tienes que hacer lo siguiente:
           </p>
-          <pre>
-            <code>
-              //declaras tu variable de string y un contador que aumenta su valor cada iteracion.
-              string a; int cont=0; cin{">"}{">"}a;<br/>
-              //en un for haremos uso de una funcion de libreria llamada .size() o .lenght() y esta
-              // hace que automaticamente en la condicion del for tome los espacios de dicho arreglo por lo tanto
-              //se ejecuta hasta que i sea un numero menor al ultimo numero que es la cantidad de caracteres.
-              for(int i=0; i{"<"} a . size(); i++) cont++ <br/>
-              cout{"<"}{"<"} cont;
-            </code>
-          </pre>
+          <CodeBlock code={iterationExample} />
         </Reveal>
       </div>
     </PageTransition>
