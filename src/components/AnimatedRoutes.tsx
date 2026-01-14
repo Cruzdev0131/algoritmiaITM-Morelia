@@ -7,8 +7,8 @@ import About from '../pages/About';
 import Faq from '../pages/Faq';
 import Join from '../pages/Join';
 import Temario from '../pages/Temario';
-import TopicPage from '../pages/TopicPage'; // ⬅️ IMPORTADO
-
+import TopicPage from '../pages/TopicPage'; 
+import Events from '../pages/Events'; 
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -19,9 +19,9 @@ function AnimatedRoutes() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="/events" element={<Events />} />
         <Route path="/join" element={<Join />} />
         <Route path="/temario" element={<Temario />} />
-        {/* RUTA DINÁMICA para todos los temas */}
         <Route path="/learning/:topicId" element={<TopicPage />} /> 
       </Routes>
     </AnimatePresence>

@@ -76,3 +76,28 @@
     line-height: 1.4;
   }
 }
+/* src/pages/TopicPage.css */
+
+.code-block-wrapper {
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  overflow: hidden; /* Corta las esquinas del pre interno */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.topic-content pre[class*="language-"] {
+  margin: 0 !important; /* Quita márgenes por defecto de Prism */
+  padding: 1.5rem !important;
+  font-size: 0.9rem;
+  background: #0d1117 !important; /* Fondo tipo GitHub Dark */
+  border: 1px solid #30363d;
+}
+
+/* Scrollbar personalizada para el código */
+.topic-content pre::-webkit-scrollbar {
+  height: 8px;
+}
+.topic-content pre::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 4px;
+}

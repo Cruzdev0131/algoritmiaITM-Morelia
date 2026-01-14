@@ -13,6 +13,9 @@
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --radius: 12px;
   --max-width: 1200px;
+  
+  /* Variable global para la altura del Navbar (Debe coincidir con Navbar.css) */
+  --nav-height: 90px; 
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,8 +29,25 @@ body {
 }
 
 /* Layout General */
-.app-layout { display: flex; flex-direction: column; min-height: 100vh; }
-.main-content { flex: 1; width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 2rem 1rem; }
+.app-layout { 
+  display: flex; 
+  flex-direction: column; 
+  min-height: 100vh; 
+}
+
+.main-content { 
+  flex: 1; 
+  width: 100%; 
+  max-width: var(--max-width); 
+  margin: 0 auto; 
+  
+  /* --- CORRECCIÓN DE LAYOUT --- */
+  /* Agregamos padding superior igual a la altura del Navbar + 2rem de respiro */
+  padding-top: calc(var(--nav-height) + 2rem); 
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 
 /* Utilidades Compartidas */
 .container { width: 100%; max-width: var(--max-width); margin: 0 auto; }

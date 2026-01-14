@@ -1,0 +1,123 @@
+/* src/pages/Events.css */
+
+.events-container {
+  padding: 2rem 1rem 4rem 1rem;
+}
+
+.events-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.events-intro {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: var(--text-light);
+}
+
+.subsection-title {
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  border-left: 5px solid var(--secondary);
+  padding-left: 1rem;
+}
+
+/* Grid de Eventos */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+/* Estilos internos de la tarjeta expandida */
+.event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.event-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.register-cta {
+  background: var(--primary);
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+/* Lista de Eventos Pasados */
+.past-events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.past-event-item {
+  display: flex;
+  gap: 1.5rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-left: 4px solid #cbd5e1; /* Gris para eventos pasados */
+  transition: transform 0.2s;
+}
+
+.past-event-item:hover {
+  transform: translateX(5px);
+  border-left-color: var(--secondary);
+}
+
+.past-date {
+  font-weight: 800;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  min-width: 70px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.past-info h4 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.past-info p {
+  color: var(--text-main);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .past-event-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .past-date {
+    text-align: left;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+}

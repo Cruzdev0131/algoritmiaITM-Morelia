@@ -33,6 +33,7 @@ const showScrolledStyle = !isHome || isScrolled;
   const navLinks = [
     { title: "Inicio", path: "/" },
     { title: "Temario", path: "/temario" },
+    { title: "Eventos", path: "/events" },
     { title: "Blog", path: "/blog" },
     { title: "Nosotros", path: "/about" },
     { title: "FAQ", path: "/faq" },
@@ -58,10 +59,7 @@ const showScrolledStyle = !isHome || isScrolled;
               className="club-logo"
             />
             
-            {/* TRUCO: No desmontamos el componente con React. 
-               Usamos CSS para colapsar la altura y opacidad del subtítulo.
-               Esto elimina el "brinco" horizontal.
-            */}
+          
             <div className="club-info">
               <h1 className="club-title">CAPC-ITM</h1>
               <p className="club-subtitle">
