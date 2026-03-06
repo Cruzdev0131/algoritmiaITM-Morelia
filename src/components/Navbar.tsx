@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaSun, FaMoon } from "react-icons/fa";
+import { FaSun, FaMoon, FaTimes } from "react-icons/fa";
 import { useTheme } from "../contexts/ThemeContext";
 import "./Navbar.css";
 
@@ -128,7 +128,16 @@ function Navbar() {
               variants={sidebarVariants}
               onClick={(e) => e.stopPropagation()}
             >
-              <h3 className="mobile-nav-title">Menú</h3>
+              <div className="mobile-nav-header">
+                <h3 className="mobile-nav-title">Menú</h3>
+                <button
+                  className="mobile-nav-close"
+                  onClick={() => setIsOpen(false)}
+                  aria-label="Cerrar menú"
+                >
+                  <FaTimes />
+                </button>
+              </div>
               <ul className="mobile-nav-list">
                 {navLinks.map((l, i) => (
                   <motion.li
