@@ -35,7 +35,33 @@
   font-size: 0.8rem;
   color: var(--primary);
   font-weight: 600;
-  opacity: 0.7;
+  opacity: 0.9;
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(var(--secondary-rgb), 0.1);
+  border: 1px solid rgba(var(--secondary-rgb), 0.25);
+  transition: all 0.25s ease;
+}
+
+.expandable-card-compact:hover .click-hint {
+  color: var(--secondary);
+  background: rgba(var(--secondary-rgb), 0.16);
+  border-color: rgba(var(--secondary-rgb), 0.35);
+}
+
+body.dark-theme .click-hint {
+  color: #cfe5ff;
+  opacity: 1;
+  background: rgba(var(--secondary-rgb), 0.2);
+  border-color: rgba(var(--secondary-rgb), 0.45);
+}
+
+body.dark-theme .expandable-card-compact:hover .click-hint {
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.16);
+  border-color: rgba(var(--accent-rgb), 0.45);
 }
 
 /* --- Overlay (Fondo Oscuro) --- */

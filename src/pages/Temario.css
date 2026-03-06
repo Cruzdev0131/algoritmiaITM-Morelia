@@ -31,7 +31,9 @@
 }
 
 body.dark-theme .temario-list a {
+  background: rgba(30, 41, 59, 0.9);
   color: var(--text-main);
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.35);
 }
 
 .temario-list a:hover {
@@ -40,6 +42,13 @@ body.dark-theme .temario-list a {
   /* Removido el hardcoded white */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   color: var(--secondary);
+}
+
+body.dark-theme .temario-list a:hover {
+  background: linear-gradient(135deg, rgba(51, 65, 85, 0.98), rgba(30, 41, 59, 0.98));
+  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.55);
+  outline: 1px solid rgba(var(--secondary-rgb), 0.35);
+  color: var(--accent);
 }
 
 /* Efecto visual de flecha al hacer hover */
