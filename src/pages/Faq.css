@@ -13,7 +13,7 @@
 
 .faq-item {
   background: var(--bg-card);
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(var(--text-main-rgb), 0.1);
   border-radius: var(--radius);
   overflow: hidden;
   transition: all 0.3s ease;
@@ -22,7 +22,7 @@
 /* Estilo cuando está abierto */
 .faq-item.active {
   border-color: var(--secondary);
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 20px rgba(var(--secondary-rgb), 0.15);
 }
 
 .faq-question {
@@ -30,7 +30,8 @@
   cursor: pointer;
   font-weight: 600;
   color: var(--primary);
-  background: #f8fafc;
+  background: rgba(var(--text-main-rgb), 0.05);
+  /* fondo sutil dependiente del tema */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,7 +40,7 @@
 }
 
 .faq-question:hover {
-  background: #e0e7ff;
+  background: rgba(var(--secondary-rgb), 0.2);
 }
 
 /* El icono de '+' */
@@ -50,6 +51,10 @@
   transition: transform 0.3s;
 }
 
+body.dark-theme .faq-question {
+  color: var(--text-main);
+}
+
 /* Rotar el icono a 'X' cuando está activo */
 .faq-item.active .faq-question::after {
   transform: rotate(45deg);
@@ -58,9 +63,10 @@
 
 .faq-answer {
   padding: 1.5rem;
-  color: var(--text-main);
-  background: white;
-  border-top: 1px solid #e5e7eb;
+  color: var(--text-light);
+  /* En vez de text-main para más legibilidad si es descripcion */
+  background: var(--bg-card);
+  border-top: 1px solid rgba(var(--text-main-rgb), 0.1);
 
   /* --- LÓGICA DEL ACORDEÓN --- */
   display: none;

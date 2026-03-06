@@ -48,10 +48,10 @@ const codersData = [
         <div style={{ background: '#f1f5f9', padding: '1rem', borderRadius: '8px', marginTop: '1rem' }}>
           <strong>🏅 Logro Destacado:</strong>
           <p>Primer lugar estatal Michoacán - Copa de Comunidades OmegaUp</p>
-          <img 
-            src="/assets/images/WhatsApp Image 2025-09-20 at 7.23.45 PM.jpeg" 
-            alt="Diploma Grande" 
-            style={{ width: '100%', marginTop: '0.5rem', borderRadius: '4px' }} 
+          <img
+            src="/assets/images/WhatsApp Image 2025-09-20 at 7.23.45 PM.jpeg"
+            alt="Diploma Grande"
+            style={{ width: '100%', marginTop: '0.5rem', borderRadius: '4px' }}
           />
         </div>
       </>
@@ -82,16 +82,16 @@ function Home() {
 
   return (
     <PageTransition>
-      <div> 
+      <div>
         {/* --- Hero Section --- */}
         <div style={{ textAlign: 'center', margin: '4rem 0', padding: '0 1rem', minHeight: '150px' }}>
-          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: 'var(--primary)', fontWeight: '800', marginBottom: '1rem' }}>
+          <h1 className="hero-title" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: 'var(--primary)', fontWeight: '800', marginBottom: '1rem' }}>
             <Typewriter
               options={{
                 strings: [
-                  'Bienvenido a CAPC-ITM', 
-                  'Aprendemos C++', 
-                  'Resolvemos Problemas', 
+                  'Bienvenido a CAPC-ITM',
+                  'Aprendemos C++',
+                  'Resolvemos Problemas',
                   'Creamos Futuro'
                 ],
                 autoStart: true,
@@ -111,14 +111,14 @@ function Home() {
           <Reveal width="100%">
             <h2 className="section-title">🏆 Cuadro de Honor</h2>
             {/* Mensaje sutil para indicar interactividad */}
-           {/*  <p style={{ textAlign: 'center', color: 'var(--text-light)', marginBottom: '2rem', fontSize: '0.9rem' }}>
+            {/*  <p style={{ textAlign: 'center', color: 'var(--text-light)', marginBottom: '2rem', fontSize: '0.9rem' }}>
               (Haz clic en una tarjeta para ver más detalles)
             </p> */}
           </Reveal>
-          
+
           <div className="destacados">
             {codersData.map((coder) => (
-              <motion.div 
+              <motion.div
                 key={coder.id}
                 layoutId={coder.id} // ID mágico para la transición
                 onClick={() => setSelectedCoder(coder)}
@@ -127,7 +127,7 @@ function Home() {
                 whileTap={{ scale: 0.98 }}
               >
                 {/* Usamos tu CoderCard original tal cual */}
-                <CoderCard 
+                <CoderCard
                   category={coder.category}
                   imageSrc={coder.imageSrc}
                   name={coder.name}
@@ -146,16 +146,16 @@ function Home() {
             <Reveal width="100%">
               <h2 className="section-title">Sobre Nosotros</h2>
             </Reveal>
-            
+
             <div className="nosotros-content">
               <div className="nosotros-text">
                 <Reveal>
                   <p>
-                    Somos el <strong>Capítulo de Algoritmia y Programación Competitiva (CAPC-ITM)</strong>. 
+                    Somos el <strong>Capítulo de Algoritmia y Programación Competitiva (CAPC-ITM)</strong>.
                     Más que un club, somos una familia de apasionados por el código.
                   </p>
                 </Reveal>
-                
+
                 <div className="nosotros-stats">
                   <Reveal><div className="stat-item"><span className="stat-number">50+</span><span className="stat-label">Miembros</span></div></Reveal>
                   <Reveal><div className="stat-item"><span className="stat-number">15+</span><span className="stat-label">Podios</span></div></Reveal>
@@ -174,9 +174,9 @@ function Home() {
             <div className="nosotros-valores">
               <Reveal width="100%"><h3>Nuestros Valores</h3></Reveal>
               <div className="valores-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginTop: '2rem' }}>
-                
+
                 <Reveal>
-                  <ExpandableCard 
+                  <ExpandableCard
                     id="val-innovacion"
                     icon={<FaLightbulb />}
                     title="Innovación"
@@ -188,7 +188,7 @@ function Home() {
                 </Reveal>
 
                 <Reveal>
-                  <ExpandableCard 
+                  <ExpandableCard
                     id="val-colaboracion"
                     icon={<FaHandshake />}
                     title="Colaboración"
@@ -200,7 +200,7 @@ function Home() {
                 </Reveal>
 
                 <Reveal>
-                  <ExpandableCard 
+                  <ExpandableCard
                     id="val-excelencia"
                     icon={<FaMedal />}
                     title="Excelencia"
@@ -212,7 +212,7 @@ function Home() {
                 </Reveal>
 
                 <Reveal>
-                  <ExpandableCard 
+                  <ExpandableCard
                     id="val-aprendizaje"
                     icon={<FaBookOpen />}
                     title="Aprendizaje"
@@ -231,11 +231,11 @@ function Home() {
         {/* --- MODAL PARA TOP CODERS --- */}
         <AnimatePresence>
           {selectedCoder && (
-            <div className="card-overlay-backdrop" style={{zIndex: 2000}}>
-              <motion.div 
+            <div className="card-overlay-backdrop" style={{ zIndex: 2000 }}>
+              <motion.div
                 className="backdrop-fill"
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: 1 }} 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setSelectedCoder(null)}
               />
@@ -250,16 +250,16 @@ function Home() {
                 </button>
 
                 <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-                  <motion.img 
-                    src={selectedCoder.imageSrc} 
+                  <motion.img
+                    src={selectedCoder.imageSrc}
                     alt={selectedCoder.name}
-                    style={{ width: '100%', maxHeight: '300px', objectFit: 'cover', borderRadius: '12px' }} 
+                    style={{ width: '100%', maxHeight: '300px', objectFit: 'cover', borderRadius: '12px' }}
                   />
-                  <span style={{ 
-                    display: 'inline-block', 
-                    background: 'var(--secondary)', 
-                    color: 'white', 
-                    padding: '0.5rem 1rem', 
+                  <span style={{
+                    display: 'inline-block',
+                    background: 'var(--secondary)',
+                    color: 'white',
+                    padding: '0.5rem 1rem',
                     borderRadius: '20px',
                     fontWeight: 'bold',
                     marginTop: '-1.5rem',
@@ -269,11 +269,11 @@ function Home() {
                     {selectedCoder.category}
                   </span>
                 </div>
-                
+
                 <h2 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>{selectedCoder.name}</h2>
                 <div style={{ marginBottom: '1.5rem', color: 'var(--text-light)' }}>
                   {selectedCoder.details.map((det, idx) => (
-                    <span key={idx} style={{ display: 'block' }}>{det}</span>
+                    <span key={idx} style={{ display: 'block', marginBottom: '0.2rem' }}>{det}</span>
                   ))}
                 </div>
 

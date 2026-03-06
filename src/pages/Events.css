@@ -38,10 +38,10 @@
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 1.5rem;
-  background: #f8fafc;
+  background: var(--bg-body);
   padding: 1rem;
   border-radius: 8px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(var(--text-main-rgb), 0.1);
 }
 
 .event-meta span {
@@ -74,17 +74,24 @@
 .past-event-item {
   display: flex;
   gap: 1.5rem;
-  background: white;
+  background: var(--bg-card);
   padding: 1.5rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  border-left: 4px solid #cbd5e1; /* Gris para eventos pasados */
+  border-left: 4px solid var(--text-light);
+  /* Gris para eventos pasados */
   transition: transform 0.2s;
 }
 
 .past-event-item:hover {
   transform: translateX(5px);
   border-left-color: var(--secondary);
+}
+
+body.dark-theme .subsection-title,
+body.dark-theme .past-info h4,
+body.dark-theme .event-meta span {
+  color: var(--text-main);
 }
 
 .past-date {
@@ -104,6 +111,10 @@
   margin-bottom: 0.5rem;
 }
 
+body.dark-theme .past-info h4 {
+  color: var(--text-main);
+}
+
 .past-info p {
   color: var(--text-main);
   font-size: 0.95rem;
@@ -115,6 +126,7 @@
     flex-direction: column;
     gap: 0.5rem;
   }
+
   .past-date {
     text-align: left;
     flex-direction: row;

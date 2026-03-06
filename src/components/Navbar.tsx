@@ -2,11 +2,14 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaSun, FaMoon } from "react-icons/fa";
+import { useTheme } from "../contexts/ThemeContext";
 import "./Navbar.css";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const location = useLocation();
 
@@ -27,7 +30,7 @@ function Navbar() {
   }, []);
 
   const isHome = location.pathname === '/';
-const showScrolledStyle = !isHome || isScrolled;
+  const showScrolledStyle = !isHome || isScrolled;
 
 
   const navLinks = [
@@ -44,13 +47,13 @@ const showScrolledStyle = !isHome || isScrolled;
   const sidebarVariants = {
     open: { x: 0, opacity: 1, transition: { type: "spring", stiffness: 300, damping: 30 } },
     closed: { x: "100%", opacity: 0, transition: { type: "spring", stiffness: 300, damping: 30 } },
-  }as const;
+  } as const;
 
   return (
     <>
-<header className={`navbar-wrapper ${showScrolledStyle ? "scrolled" : ""}`}>
-          <div className="navbar-container">
-          
+      <header className={`navbar-wrapper ${showScrolledStyle ? "scrolled" : ""}`}>
+        <div className="navbar-container">
+
           {/* BRANDING (Izquierda) */}
           <Link to="/" className="club-branding">
             <img
@@ -58,8 +61,8 @@ const showScrolledStyle = !isHome || isScrolled;
               alt="CAPC"
               className="club-logo"
             />
-            
-          
+
+
             <div className="club-info">
               <h1 className="club-title">CAPC-ITM</h1>
               <p className="club-subtitle">
@@ -80,6 +83,13 @@ const showScrolledStyle = !isHome || isScrolled;
                   {l.title}
                 </NavLink>
               ))}
+              <button
+                onClick={toggleTheme}
+                className="theme-toggle-btn"
+                aria-label="Toggle Theme"
+              >
+                {theme === 'dark' ? <FaSun /> : <FaMoon />}
+              </button>
             </div>
           </nav>
 
@@ -108,7 +118,7 @@ const showScrolledStyle = !isHome || isScrolled;
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
             />
-            
+
             {/* Panel lateral */}
             <motion.div
               className="mobile-nav"
@@ -132,6 +142,20 @@ const showScrolledStyle = !isHome || isScrolled;
                     </NavLink>
                   </motion.li>
                 ))}
+
+                <motion.li
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + navLinks.length * 0.05 }}
+                  style={{ marginTop: '0.5rem' }}
+                >
+                  <button
+                    onClick={() => { toggleTheme(); setIsOpen(false); }}
+                    className="mobile-theme-toggle"
+                  >
+                    {theme === 'dark' ? <><FaSun /> Modo Claro</> : <><FaMoon /> Modo Oscuro</>}
+                  </button>
+                </motion.li>
               </ul>
             </motion.div>
           </>

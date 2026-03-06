@@ -21,6 +21,7 @@
   box-shadow: var(--shadow);
   text-decoration: none;
   color: var(--primary);
+  /* Regresa al azul corporativo en Modo Claro */
   font-weight: 600;
   font-size: 1.1rem;
   transition: all 0.3s ease;
@@ -29,9 +30,14 @@
   overflow: hidden;
 }
 
+body.dark-theme .temario-list a {
+  color: var(--text-main);
+}
+
 .temario-list a:hover {
   transform: translateY(-5px);
-  background: white;
+  background: var(--bg-body);
+  /* Removido el hardcoded white */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   color: var(--secondary);
 }

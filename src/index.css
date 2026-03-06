@@ -1,24 +1,58 @@
 /* src/index.css */
 :root {
   /* Paleta de Colores Estandarizada */
-  --primary: #1e3a8a;       /* Azul oscuro */
-  --secondary: #3b82f6;     /* Azul brillante */
-  --accent: #00f2ff;        /* Cyan neón */
-  --text-main: #1f2937;     /* Texto oscuro */
-  --text-light: #6b7280;    /* Texto gris */
-  --bg-body: #f3f4f6;       /* Fondo gris suave */
-  --bg-card: #ffffff;       /* Fondo tarjetas */
-  
+  --primary: #1e3a8a;
+  --primary-rgb: 30, 58, 138;
+  /* Azul oscuro */
+  --secondary: #3b82f6;
+  --secondary-rgb: 59, 130, 246;
+  /* Azul brillante */
+  --accent: #00f2ff;
+  --accent-rgb: 0, 242, 255;
+  /* Cyan neón */
+  --text-main: #1f2937;
+  --text-main-rgb: 31, 41, 55;
+  /* Texto oscuro */
+  --text-light: #6b7280;
+  --text-light-rgb: 107, 114, 128;
+  /* Texto gris */
+  --bg-body: #f3f4f6;
+  --bg-body-rgb: 243, 244, 246;
+  /* Fondo gris suave */
+  --bg-card: #ffffff;
+  --bg-card-rgb: 255, 255, 255;
+  /* Fondo tarjetas */
+
   /* Sistema de Espaciado y Diseño */
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --radius: 12px;
   --max-width: 1200px;
-  
+
   /* Variable global para la altura del Navbar (Debe coincidir con Navbar.css) */
-  --nav-height: 90px; 
+  --nav-height: 90px;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* --- MODO OSCURO (Dark Theme) --- */
+body.dark-theme {
+  --bg-body: #0f172a;
+  /* Slate 900 */
+  --bg-body-rgb: 15, 23, 42;
+  --bg-card: #1e293b;
+  /* Slate 800 */
+  --bg-card-rgb: 30, 41, 59;
+  --text-main: #f8fafc;
+  /* Slate 50 */
+  --text-main-rgb: 248, 250, 252;
+  --text-light: #cbd5e1;
+  /* Slate 300 */
+  --text-light-rgb: 203, 213, 225;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -26,34 +60,81 @@ body {
   color: var(--text-main);
   line-height: 1.6;
   min-height: 100vh;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Layout General */
-.app-layout { 
-  display: flex; 
-  flex-direction: column; 
-  min-height: 100vh; 
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.main-content { 
-  flex: 1; 
-  width: 100%; 
-  max-width: var(--max-width); 
-  margin: 0 auto; 
-  
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+
   /* --- CORRECCIÓN DE LAYOUT --- */
   /* Agregamos padding superior igual a la altura del Navbar + 2rem de respiro */
-  padding-top: calc(var(--nav-height) + 2rem); 
+  padding-top: calc(var(--nav-height) + 2rem);
   padding-bottom: 2rem;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
 /* Utilidades Compartidas */
-.container { width: 100%; max-width: var(--max-width); margin: 0 auto; }
-h1, h2, h3 { color: var(--primary); font-weight: 700; }
-a { text-decoration: none; color: var(--secondary); transition: 0.3s; }
-a:hover { color: var(--primary); }
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6,
+body.dark-theme strong {
+  color: var(--text-main);
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary);
+  transition: 0.3s;
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+body.dark-theme a:hover {
+  color: var(--accent);
+}
+
+/* Glassmorphism Global Utility */
+.glass-pane {
+  background: rgba(var(--primary-rgb), 0.45);
+  /* Azul institucional (var(--primary)) */
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius);
+}
 
 /* Títulos de Sección Estandarizados */
 .section-title {
@@ -62,6 +143,7 @@ a:hover { color: var(--primary); }
   margin-bottom: 2rem;
   position: relative;
 }
+
 .section-title::after {
   content: '';
   display: block;

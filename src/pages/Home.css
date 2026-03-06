@@ -15,10 +15,30 @@
   padding: 0 10px;
 }
 
+/* --- HERO SECTION --- */
+/* Animación simple para el Hero */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body.dark-theme .hero-title,
+body.dark-theme .hero-title .Typewriter__wrapper,
+body.dark-theme .hero-title .Typewriter__cursor {
+  color: var(--text-main) !important;
+}
+
 /* --- Estilos de la Sección Nosotros --- */
 .nosotros-section {
-  background: white;
-  /* O usa tu gradiente: linear-gradient(135deg, #f8fafc, #e2e8f0) */
+  background: var(--bg-card);
+  /* Fondo dinámico dependiendo del tema */
   padding: 3rem 0;
   margin-top: 4rem;
   position: relative;
@@ -51,6 +71,11 @@
   color: var(--primary);
 }
 
+body.dark-theme .nosotros-text strong {
+  color: var(--secondary);
+  /* Azul brillante para destacar sobre el gris oscuro */
+}
+
 /* Estadísticas */
 .nosotros-stats {
   display: flex;
@@ -63,7 +88,8 @@
   text-align: center;
   flex: 1;
   min-width: 100px;
-  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  background: var(--bg-card);
+  /* Simplificado a tu variable dinámica de tarjeta */
   padding: 1rem;
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -76,6 +102,10 @@
   color: var(--secondary);
   line-height: 1;
   margin-bottom: 0.5rem;
+}
+
+body.dark-theme .stat-number {
+  color: var(--text-main);
 }
 
 .stat-label {
@@ -114,6 +144,10 @@
   font-weight: 700;
 }
 
+body.dark-theme .nosotros-valores h3 {
+  color: var(--text-main);
+}
+
 .valores-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -123,11 +157,12 @@
 .valor-item {
   text-align: center;
   padding: 2rem 1.5rem;
-  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  background: var(--bg-card);
+  /* Usa la variable dinámica del tema */
   border-radius: 20px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  border: 1px solid rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(var(--secondary-rgb), 0.1);
 }
 
 .valor-item:hover {
@@ -146,6 +181,15 @@
   color: var(--primary);
   margin-bottom: 1rem;
   font-weight: 700;
+}
+
+body.dark-theme .valor-item h4,
+body.dark-theme .nosotros-valores h3,
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3 {
+  color: var(--text-main);
+  /* Hace los títulos blancos en modo oscuro en lugar de azul marino */
 }
 
 .valor-item p {

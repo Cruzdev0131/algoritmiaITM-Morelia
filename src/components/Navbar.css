@@ -12,11 +12,11 @@
   width: 100%;
   z-index: 1000;
 
-  /* COLOR ORIGINAL: Usaba rgba manual. 
-     NUEVO: Usamos el mismo tono que var(--primary) (#1e3a8a) con transparencia */
-  background-color: rgba(30, 58, 138, 0.85);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* Fondo azul profundo en sintonía con la marca principal */
+  background-color: rgba(var(--primary-rgb), 0.45);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
   /* TRANSICIÓN SUAVE: Esta curva evita el golpe seco */
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -24,13 +24,11 @@
 
 /* Estado Scrolled */
 .navbar-wrapper.scrolled {
-  /* COLOR NUEVO: Un azul muy profundo derivado de tu paleta, en lugar de negro/gris */
-  background: rgba(30, 58, 138, 0.95);
-
-  backdrop-filter: blur(12px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  /* Sombra más suave */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(var(--primary-rgb), 0.95);
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .navbar-container {
@@ -288,4 +286,54 @@
     padding: 0.8rem 1rem;
     /* Área táctil más grande */
   }
+}
+
+/* --- Botones de Tema --- */
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  margin-left: 0.5rem;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(15deg);
+}
+
+.mobile-theme-toggle {
+  background: rgba(30, 58, 138, 0.1);
+  /* var(--primary) suavizado */
+  border: 1px solid rgba(30, 58, 138, 0.2);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mobile-theme-toggle:hover {
+  background: rgba(30, 58, 138, 0.2);
+}
+
+/* En caso de modo oscuro en la tarjeta del móvil, podemos darle estilo con un context o css extra */
+body.dark-theme .mobile-theme-toggle {
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
 }

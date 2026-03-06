@@ -2,8 +2,10 @@
 
 /* Estilos para la línea de tiempo (Índice) */
 .timeline-index {
-  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-  border: 1px solid var(--gray-200);
+  background: var(--bg-card);
+  /* Removido gradient estático blanco */
+  border: 1px solid rgba(var(--text-main-rgb), 0.1);
+  /* Removido var invalido gray-200 */
   border-radius: var(--radius);
   padding: 2rem;
   text-align: center;
@@ -57,7 +59,7 @@
 .blog-post h3 {
   margin-top: 2.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--gray-200);
+  border-bottom: 2px solid rgba(var(--text-main-rgb), 0.1);
 }
 
 .blog-post ul,

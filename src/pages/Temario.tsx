@@ -1,9 +1,10 @@
 // src/pages/Temario.tsx (Actualizado)
 import './Temario.css';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function Temario() {
-const topics = [
+  const topics = [
     { title: "CONCEPTOS BÁSICOS DE PROGRAMACIÓN", path: "conceptos", icon: "💡" },
     { title: "ENTRADA Y SALIDA DE DATOS", path: "entrada-salida", icon: "⌨️" },
     { title: "CICLOS Y ESTRUCTURAS REPETITIVAS", path: "ciclos", icon: "🔄" },
@@ -17,20 +18,38 @@ const topics = [
     { title: "DISJOINT SET UNION (DSU)", path: "dsu", icon: "🔗" },
   ];
 
+  const listVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+
+  const itemVariants: import('framer-motion').Variants = {
+    hidden: { opacity: 0, scale: 0.9, y: 15 },
+    show: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", stiffness: 200 } }
+  };
+
   return (
     <div className="container">
       <h2>Temario de Estudio</h2>
       <p>Explora nuestros temas de programación competitiva organizados por nivel de dificultad.</p>
-      
-      <ul className="temario-list">
+
+      <motion.ul
+        className="temario-list"
+        variants={listVariants}
+        initial="hidden"
+        animate="show"
+      >
         {topics.map((topic, index) => (
-          <li key={index}>
+          <motion.li key={index} variants={itemVariants}>
             <Link to={`/learning/${topic.path}`}>
               {topic.title}
             </Link>
-          </li>
+          </motion.li>
         ))}
-      </ul>
+      </motion.ul>
     </div>
   );
 }

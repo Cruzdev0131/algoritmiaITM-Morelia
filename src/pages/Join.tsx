@@ -1,22 +1,26 @@
 // src/pages/Join.tsx
 import PageTransition from '../components/PageTransition';
 import { Reveal } from '../components/Reveal';
-import ExpandableCard from '../components/ExpandableCard'; // <--- IMPORTAR
+import ExpandableCard from '../components/ExpandableCard';
 import { FaFacebook, FaInstagram, FaDiscord, FaWhatsapp, FaTrophy, FaUsers, FaCode, FaChalkboardTeacher } from 'react-icons/fa';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import './Join.css';
+
+const MySwal = withReactContent(Swal);
 
 function Join() {
   return (
     <PageTransition>
       <div className="container join-container">
-        
+
         {/* Header igual... */}
         <section className="join-header">
           <Reveal width="100%">
             <h2 className="section-title">¡Únete a la Comunidad!</h2>
             <p className="join-intro">
-               Si te apasiona la tecnología y quieres llevar tus habilidades al siguiente nivel, 
-               <strong> CAPC-ITM es tu lugar.</strong>
+              Si te apasiona la tecnología y quieres llevar tus habilidades al siguiente nivel,
+              <strong> CAPC-ITM es tu lugar.</strong>
             </p>
           </Reveal>
         </section>
@@ -26,12 +30,12 @@ function Join() {
           <Reveal width="100%">
             <h3 className="benefits-title">¿Por qué unirte? (Haz clic en las tarjetas)</h3>
           </Reveal>
-          
+
           <div className="benefits-grid">
-            
+
             {/* Tarjeta 1: C++ */}
             <Reveal>
-              <ExpandableCard 
+              <ExpandableCard
                 id="card-cpp"
                 icon={<FaCode />}
                 title="Aprende C++"
@@ -52,7 +56,7 @@ function Join() {
 
             {/* Tarjeta 2: Competencias */}
             <Reveal>
-              <ExpandableCard 
+              <ExpandableCard
                 id="card-competencias"
                 icon={<FaTrophy />}
                 title="Competencias"
@@ -73,7 +77,7 @@ function Join() {
 
             {/* Tarjeta 3: Networking */}
             <Reveal>
-              <ExpandableCard 
+              <ExpandableCard
                 id="card-networking"
                 icon={<FaUsers />}
                 title="Networking"
@@ -88,9 +92,9 @@ function Join() {
               />
             </Reveal>
 
-             {/* Tarjeta 4: Mentorías */}
-             <Reveal>
-              <ExpandableCard 
+            {/* Tarjeta 4: Mentorías */}
+            <Reveal>
+              <ExpandableCard
                 id="card-mentorias"
                 icon={<FaChalkboardTeacher />}
                 title="Mentorías"
@@ -110,18 +114,46 @@ function Join() {
 
         {/* Sección de Redes Sociales igual... */}
         <section className="social-section">
-            {/* ... (tu código de redes sociales anterior) ... */}
-            {/* Si quieres te lo pego completo, pero es igual al paso anterior */}
-             <Reveal width="100%">
+          {/* ... (tu código de redes sociales anterior) ... */}
+          {/* Si quieres te lo pego completo, pero es igual al paso anterior */}
+          <Reveal width="100%">
             <div className="cta-box">
               <h3>¡Conéctate con nosotros!</h3>
               <p>La comunicación oficial y los avisos de clases se dan por nuestros grupos:</p>
-              
+
               <div className="join-socials">
-                <a href="https://whatsapp.com/channel/0029Vb7Iuq1BA1f4srngcy2N" target="_blank" rel="noreferrer" className="social-btn whatsapp">
+                <a
+                  href="https://whatsapp.com/channel/0029Vb7Iuq1BA1f4srngcy2N"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-btn whatsapp"
+                  onClick={() => {
+                    MySwal.fire({
+                      title: '¡Te redirigiremos a WhatsApp!',
+                      text: 'Únete a nuestro canal para no perderte ningún aviso.',
+                      icon: 'info',
+                      confirmButtonColor: '#25D366',
+                      confirmButtonText: 'Ir al Canal 🚀'
+                    });
+                  }}
+                >
                   <FaWhatsapp /> <span>Canal de Avisos</span>
                 </a>
-                <a href="https://discord.gg/vPRgwwYZ" target="_blank" rel="noreferrer" className="social-btn discord">
+                <a
+                  href="https://discord.gg/vPRgwwYZ"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-btn discord"
+                  onClick={() => {
+                    MySwal.fire({
+                      title: '¡Bienvenido a nuestro Servidor!',
+                      text: 'En Discord resolvemos dudas, programamos juntos y convivimos.',
+                      icon: 'success',
+                      confirmButtonColor: '#5865F2',
+                      confirmButtonText: 'Entrar al Servidor 👾'
+                    });
+                  }}
+                >
                   <FaDiscord /> <span>Comunidad</span>
                 </a>
                 <a href="https://www.facebook.com/profile.php?id=61575041050815" target="_blank" rel="noreferrer" className="social-btn facebook">
