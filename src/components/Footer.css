@@ -124,6 +124,11 @@
   box-shadow: 0 4px 12px rgba(0, 242, 255, 0.3);
 }
 
+/* Evita que la regla global body.dark-theme a:hover pise los iconos del footer */
+body.dark-theme .social-links a:hover {
+  color: #0f172a;
+}
+
 /* --- Bottom Bar --- */
 .footer-bottom {
   max-width: var(--max-width);
