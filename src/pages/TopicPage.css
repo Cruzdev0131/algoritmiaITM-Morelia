@@ -38,49 +38,117 @@
   color: var(--text-main);
 }
 
-/* --- ESTILOS PARA BLOQUES DE CÓDIGO --- */
-
-/* Contenedor externo (Tarjeta) */
+/* --- Code Block Styles --- */
 .code-block-wrapper {
+  --code-bg: #f8fafc;
+  --code-fg: #1f2937;
+  --code-border: rgba(var(--text-main-rgb), 0.15);
+  --code-comment: #64748b;
+  --code-keyword: #7c3aed;
+  --code-string: #15803d;
+  --code-number: #b45309;
+  --code-function: #0369a1;
+  --code-operator: #334155;
+
   margin: 2rem 0;
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  background: #1e1e1e; /* Fondo oscuro de respaldo */
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* Estilo para el <pre> (El bloque en sí) */
-.topic-content pre, 
+body.dark-theme .code-block-wrapper {
+  --code-bg: #0f172a;
+  --code-fg: #e2e8f0;
+  --code-border: rgba(148, 163, 184, 0.35);
+  --code-comment: #94a3b8;
+  --code-keyword: #c4b5fd;
+  --code-string: #86efac;
+  --code-number: #fdba74;
+  --code-function: #7dd3fc;
+  --code-operator: #cbd5e1;
+}
+
+.topic-content pre,
 .code-block-wrapper pre {
-  margin: 0 !important; /* Prism suele agregar márgenes, los reseteamos */
+  margin: 0 !important;
   padding: 1.5rem !important;
-  overflow-x: auto; /* Scroll horizontal si la línea es muy larga */
-  background: #1e1e1e !important; /* Forzamos fondo oscuro */
+  overflow-x: auto;
+  background: transparent !important;
   border-radius: var(--radius);
+  color: var(--code-fg) !important;
 }
 
-/* Estilo para el <code> (El texto dentro) */
-.topic-content code, 
+.topic-content code,
 .code-block-wrapper code {
   font-family: 'Fira Code', 'Consolas', monospace;
   font-size: 0.95rem;
   line-height: 1.6;
   direction: ltr;
   text-align: left;
-  white-space: pre; /* IMPORTANTE: Respeta los saltos de línea */
+  white-space: pre;
   word-spacing: normal;
   word-break: normal;
   tab-size: 4;
   hyphens: none;
-  color: #d4d4d4; /* Color base claro */
-  display: block; /* Asegura que se comporte como bloque */
+  color: var(--code-fg) !important;
+  text-shadow: none;
+  display: block;
 }
 
-/* Ajustes Responsivos */
+.code-block-wrapper .token.comment,
+.code-block-wrapper .token.block-comment,
+.code-block-wrapper .token.prolog,
+.code-block-wrapper .token.doctype,
+.code-block-wrapper .token.cdata {
+  color: var(--code-comment);
+}
+
+.code-block-wrapper .token.keyword,
+.code-block-wrapper .token.selector,
+.code-block-wrapper .token.atrule,
+.code-block-wrapper .token.important,
+.code-block-wrapper .token.builtin {
+  color: var(--code-keyword);
+}
+
+.code-block-wrapper .token.string,
+.code-block-wrapper .token.char,
+.code-block-wrapper .token.attr-value,
+.code-block-wrapper .token.regex,
+.code-block-wrapper .token.variable {
+  color: var(--code-string);
+}
+
+.code-block-wrapper .token.number,
+.code-block-wrapper .token.boolean,
+.code-block-wrapper .token.constant,
+.code-block-wrapper .token.symbol {
+  color: var(--code-number);
+}
+
+.code-block-wrapper .token.function,
+.code-block-wrapper .token.function-name,
+.code-block-wrapper .token.class-name,
+.code-block-wrapper .token.property {
+  color: var(--code-function);
+}
+
+.code-block-wrapper .token.operator,
+.code-block-wrapper .token.entity,
+.code-block-wrapper .token.url,
+.code-block-wrapper .token.punctuation {
+  color: var(--code-operator);
+  background: none;
+}
+
+/* Responsive tweaks */
 @media (max-width: 600px) {
   .topic-content pre {
     padding: 1rem !important;
   }
+
   .topic-content code {
     font-size: 0.85rem;
   }

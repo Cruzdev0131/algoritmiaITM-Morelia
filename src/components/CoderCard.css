@@ -49,6 +49,7 @@
 }
 
 .card-content {
+  background: var(--secondary);
   padding: 1.5rem;
   text-align: center;
   flex: 1;
@@ -63,10 +64,14 @@
 }
 
 .card-detail {
-  color: #cbd5e1;
+  color: rgba(255, 255, 255, 0.85);
   /* Gris medio para el texto secundario */
   font-size: 0.95rem;
   margin-bottom: 0.25rem;
+}
+
+.card-extra-text {
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .card-extra-img {

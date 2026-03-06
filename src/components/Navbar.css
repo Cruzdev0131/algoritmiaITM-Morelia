@@ -258,7 +258,7 @@
 .mobile-nav-list a.active,
 .mobile-nav-list a:hover {
   color: var(--primary);
-  background: #f1f5f9;
+  background: rgba(var(--text-main-rgb), 0.08);
 }
 
 /* Ajustes para el Navbar en Móviles */
