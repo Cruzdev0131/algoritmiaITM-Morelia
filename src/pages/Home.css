@@ -1,6 +1,7 @@
 /* src/pages/Home.css */
 
-.mejores-del-club, .nosotros-section {
+.mejores-del-club,
+.nosotros-section {
   margin-bottom: 4rem;
   animation: fadeIn 0.8s ease-out;
 }
@@ -16,7 +17,8 @@
 
 /* --- Estilos de la Sección Nosotros --- */
 .nosotros-section {
-  background: white; /* O usa tu gradiente: linear-gradient(135deg, #f8fafc, #e2e8f0) */
+  background: white;
+  /* O usa tu gradiente: linear-gradient(135deg, #f8fafc, #e2e8f0) */
   padding: 3rem 0;
   margin-top: 4rem;
   position: relative;
@@ -64,7 +66,7 @@
   background: linear-gradient(135deg, #ffffff, #f8fafc);
   padding: 1rem;
   border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .stat-number {
@@ -123,7 +125,7 @@
   padding: 2rem 1.5rem;
   background: linear-gradient(135deg, #ffffff, #f8fafc);
   border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   border: 1px solid rgba(59, 130, 246, 0.1);
 }
@@ -153,26 +155,57 @@
 
 /* Animación */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsividad */
 @media (max-width: 768px) {
   .nosotros-content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    /* Apila texto arriba y foto abajo */
+    gap: 1.5rem;
   }
-  
+
   .nosotros-section {
-    padding: 2rem 0;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
   }
-  
+
+  /* Destacados (Top Coders) se apilan con menos separación */
   .destacados {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
-  
+
+  /* Los números grandes (Estadísticas) */
   .nosotros-stats {
     gap: 1rem;
+    flex-wrap: wrap;
+    /* Mantiene que salten de línea si es necesario */
+  }
+
+  .stat-number {
+    font-size: 2rem;
+    /* Achicamos ligeramente los números para celular */
+  }
+
+  /* Los valores (Innovación, Trabajo en equipo, etc.) */
+  .valores-grid {
+    grid-template-columns: 1fr;
+    /* En vez de 220px, que ocupe todo el ancho */
+    gap: 1rem;
+  }
+
+  .valor-item {
+    padding: 1.5rem 1rem;
+    /* Menos relleno interno en la tarjeta */
   }
 }

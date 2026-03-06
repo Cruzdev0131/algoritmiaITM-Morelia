@@ -71,3 +71,20 @@ a:hover { color: var(--primary); }
   margin: 0.5rem auto;
   border-radius: 2px;
 }
+
+/* --- Ajustes Globales para Móviles --- */
+@media (max-width: 768px) {
+  .main-content {
+    /* Reducimos el padding lateral en celulares */
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    /* Ajustamos el padding superior para el Navbar que es más pequeño */
+    padding-top: calc(var(--nav-height) + 1rem);
+  }
+
+  .section-title {
+    /* El clamp actualiza dinámicamente, pero para forzar en pantallas pequeñas 
+       reducimos un poco el margen y la línea inferior */
+    margin-bottom: 1.5rem;
+  }
+}

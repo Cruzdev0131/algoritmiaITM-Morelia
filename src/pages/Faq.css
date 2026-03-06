@@ -1,13 +1,14 @@
 /* src/pages/Faq.css */
 
 .faq-list {
-  max-width: 1100px; 
+  max-width: 1100px;
 
-margin: 6rem auto 4rem auto;
+  margin: 6rem auto 4rem auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-bottom: 4rem; /* Espacio antes del footer */
+  margin-bottom: 4rem;
+  /* Espacio antes del footer */
 }
 
 .faq-item {
@@ -33,7 +34,8 @@ margin: 6rem auto 4rem auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  user-select: none; /* Evita que se seleccione el texto al hacer clic rápido */
+  user-select: none;
+  /* Evita que se seleccione el texto al hacer clic rápido */
 }
 
 .faq-question:hover {
@@ -59,9 +61,10 @@ margin: 6rem auto 4rem auto;
   color: var(--text-main);
   background: white;
   border-top: 1px solid #e5e7eb;
-  
+
   /* --- LÓGICA DEL ACORDEÓN --- */
-  display: none; /* Oculto por defecto */
+  display: none;
+  /* Oculto por defecto */
   animation: slideDown 0.3s ease;
 }
 
@@ -71,6 +74,30 @@ margin: 6rem auto 4rem auto;
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Ajustes Móviles --- */
+@media (max-width: 768px) {
+  .faq-list {
+    margin: 3rem 1rem 2rem 1rem;
+  }
+
+  .faq-question {
+    padding: 1.2rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .faq-answer {
+    padding: 1.2rem 1rem;
+    font-size: 0.9rem;
+  }
 }
