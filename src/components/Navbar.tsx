@@ -128,7 +128,7 @@ function Navbar() {
               variants={sidebarVariants}
               onClick={(e) => e.stopPropagation()}
             >
-              <h3 style={{ marginBottom: '1.5rem', color: 'var(--primary)' }}>Menú</h3>
+              <h3 className="mobile-nav-title">Menú</h3>
               <ul className="mobile-nav-list">
                 {navLinks.map((l, i) => (
                   <motion.li

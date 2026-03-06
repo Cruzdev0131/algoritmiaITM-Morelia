@@ -233,6 +233,14 @@
   flex-direction: column;
   gap: 1.5rem;
   z-index: 1201;
+  border-left: 1px solid rgba(var(--text-main-rgb), 0.15);
+}
+
+.mobile-nav-title {
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  font-size: 1.35rem;
+  font-weight: 700;
 }
 
 .mobile-nav-list {
@@ -251,13 +259,31 @@
   display: block;
   padding: 0.5rem;
   border-radius: 8px;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
 }
 
 .mobile-nav-list a.active,
 .mobile-nav-list a:hover {
   color: var(--primary);
   background: rgba(var(--text-main-rgb), 0.08);
+}
+
+body.dark-theme .mobile-nav-title {
+  color: var(--accent);
+}
+
+body.dark-theme .mobile-nav {
+  border-left: 1px solid rgba(var(--secondary-rgb), 0.4);
+}
+
+body.dark-theme .mobile-nav-list a {
+  color: #e2e8f0;
+}
+
+body.dark-theme .mobile-nav-list a.active,
+body.dark-theme .mobile-nav-list a:hover {
+  color: var(--accent);
+  background: rgba(var(--secondary-rgb), 0.24);
 }
 
 /* Ajustes para el Navbar en Móviles */
