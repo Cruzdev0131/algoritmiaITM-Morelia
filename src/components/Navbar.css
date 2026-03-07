@@ -11,25 +11,43 @@
   left: 0;
   width: 100%;
   z-index: 1000;
+  overflow: hidden;
 
   /* Fondo azul profundo en sintonía con la marca principal */
   background-color: rgba(var(--primary-rgb), 0.45);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
 
   /* TRANSICIÓN SUAVE: Esta curva evita el golpe seco */
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  isolation: isolate;
+  will-change: background-color, box-shadow;
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  transition: backdrop-filter 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    -webkit-backdrop-filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Estado Scrolled */
 .navbar-wrapper.scrolled {
   background: rgba(var(--primary-rgb), 0.95);
-  backdrop-filter: blur(20px) saturate(200%);
-  -webkit-backdrop-filter: blur(20px) saturate(200%);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
+.navbar-wrapper.scrolled::before {
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+}
+
 .navbar-container {
+  position: relative;
+  z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
@@ -54,6 +72,11 @@
   text-decoration: none;
   color: white;
   min-width: max-content;
+  transition: none;
+}
+
+.club-branding:hover {
+  color: white;
 }
 
 .club-logo {
@@ -135,6 +158,7 @@
   border-radius: 99px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: background 0.3s ease;
+  overflow: hidden;
 }
 
 .navbar-wrapper.scrolled .desktop-links {
@@ -143,13 +167,17 @@
 }
 
 .desktop-links a {
+  display: inline-flex;
+  align-items: center;
   color: rgba(255, 255, 255, 0.9);
   padding: 0.5rem 1rem;
   border-radius: 99px;
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  line-height: 1;
+  transition: color 0.3s ease, background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .desktop-links a:hover {
@@ -368,15 +396,17 @@ body.dark-theme .mobile-nav-list a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease,
+    transform 0.3s ease;
   font-size: 1.1rem;
   margin-left: 0.5rem;
+  transform-origin: center;
 }
 
 .theme-toggle-btn:hover {
   color: var(--accent);
   background: rgba(255, 255, 255, 0.1);
-  transform: rotate(15deg);
+  transform: none;
 }
 
 .mobile-theme-toggle {
